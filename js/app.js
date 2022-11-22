@@ -5,7 +5,7 @@ const productosArray = [
         titulo: 'Impresora Creality 3D Ender 3',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_611506-MLA49842850686_052022-V.webp',
         categoria: {
-            nombre: 'impresoras',
+            nombre: 'Impresoras',
             id: 'impresoras'
         },
         precio: 65000
@@ -16,7 +16,7 @@ const productosArray = [
         titulo: 'Impresora Hellbot Magna Se',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_749001-MLA52141336514_102022-V.webp',
         categoria: {
-            nombre: 'impresoras',
+            nombre: 'Impresoras',
             id: 'impresoras'
         },
         precio: 79000
@@ -27,7 +27,7 @@ const productosArray = [
         titulo: 'Impresora Artillery Genius',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_614500-MLA42238163094_062020-V.webp',
         categoria: {
-            nombre: 'impresoras',
+            nombre: 'Impresoras',
             id: 'impresoras'
         },
         precio: 118000
@@ -38,7 +38,7 @@ const productosArray = [
         titulo: 'Impresora Artillery Hornet',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_817658-MLA51619022699_092022-V.webp',
         categoria: {
-            nombre: 'impresoras',
+            nombre: 'Impresoras',
             id: 'impresoras'
         },
         precio: 67500
@@ -51,7 +51,7 @@ const productosArray = [
         titulo: 'Termistor 350 Grados',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_954794-MLA44796405521_022021-V.webp',
         categoria: {
-            nombre: 'componentes',
+            nombre: 'Componentes',
             id: 'componentes'
         },
         precio: 950
@@ -62,7 +62,7 @@ const productosArray = [
         titulo: 'Tubo teflón Pfte Capricorn 4mmx1.9mm',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_739463-MLA48744183268_012022-V.webp',
         categoria: {
-            nombre: 'componentes',
+            nombre: 'Componentes',
             id: 'componentes'
         },
         precio: 2300
@@ -73,7 +73,7 @@ const productosArray = [
         titulo: 'Brazo Extrusor Idler Arm',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_797150-MLA44679147485_012021-V.webp',
         categoria: {
-            nombre: 'componentes',
+            nombre: 'Componentes',
             id: 'componentes'
         },
         precio: 1850
@@ -84,7 +84,7 @@ const productosArray = [
         titulo: 'Kit Extrusor Creality Metalico Ender 3',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_739593-MLA45551292146_042021-V.webp',
         categoria: {
-            nombre: 'componentes',
+            nombre: 'Componentes',
             id: 'componentes'
         },
         precio: 2750
@@ -97,7 +97,7 @@ const productosArray = [
         titulo: 'Filamento 3D PLA Printalot 1.75mm 1Kg Blanco',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_842884-MLA48658563085_122021-V.webp',
         categoria: {
-            nombre: 'filamentos',
+            nombre: 'Filamentos',
             id: 'filamentos'
         },
         precio: 3285
@@ -108,7 +108,7 @@ const productosArray = [
         titulo: 'Filamento Pla Impresora 3d',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_954549-MLA46371004734_062021-V.webp',
         categoria: {
-            nombre: 'filamentos',
+            nombre: 'Filamentos',
             id: 'filamentos'
         },
         precio: 2500
@@ -119,7 +119,7 @@ const productosArray = [
         titulo: 'Filamento 3D PLA 1.75mm dorado',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_660335-MLA48658563472_122021-V.webp',
         categoria: {
-            nombre: 'filamentos',
+            nombre: 'Filamentos',
             id: 'filamentos'
         },
         precio: 5500
@@ -130,16 +130,18 @@ const productosArray = [
         titulo: 'Filamento 3D PLA Grilon3 Rojo',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_837812-MLA48657674775_122021-V.webp',
         categoria: {
-            nombre: 'filamentos',
+            nombre: 'Filamentos',
             id: 'filamentos'
         },
         precio: 3245
     }
 
 ];
-//*Elementos traidos de HTML
+//*Elementos de DOM
 const contenedorProductos = document.querySelector("#contenedorProducto");
 const botonesCategorias = document.querySelectorAll(".botonCategoria");
+const tituloPrincipal = document.querySelector("#tituloPrincipal");
+
 
 
 
@@ -176,9 +178,13 @@ botonesCategorias.forEach(boton => {
         e.currentTarget.classList.add("active");
 
         if(e.currentTarget.id != "todos") {
-            const productosBoton = productosArray.filter(producto => producto.categoria.id === e.currentTarget.id)
+            const productoCategoria = productosArray.find(producto => producto.categoria.id === e.currentTarget.id);
+            tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
+            const productosBoton = productosArray.filter(producto => producto.categoria.id === e.currentTarget.id);
             cargarProductos(productosBoton);
         } else {
+            tituloPrincipal.innerText = "Todos los Productos";
             cargarProductos(productosArray);
         }
         
