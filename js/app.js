@@ -5,8 +5,8 @@ const productosArray = [
         titulo: 'Impresora Creality 3D Ender 3',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_611506-MLA49842850686_052022-V.webp',
         categoria: {
-            nombre: 'Impresoras',
-            id: 'Impresoras'
+            nombre: 'impresoras',
+            id: 'impresoras'
         },
         precio: 65000
     },
@@ -16,8 +16,8 @@ const productosArray = [
         titulo: 'Impresora Hellbot Magna Se',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_749001-MLA52141336514_102022-V.webp',
         categoria: {
-            nombre: 'Impresoras',
-            id: 'Impresoras'
+            nombre: 'impresoras',
+            id: 'impresoras'
         },
         precio: 79000
     },
@@ -27,8 +27,8 @@ const productosArray = [
         titulo: 'Impresora Artillery Genius',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_614500-MLA42238163094_062020-V.webp',
         categoria: {
-            nombre: 'Impresoras',
-            id: 'Impresoras'
+            nombre: 'impresoras',
+            id: 'impresoras'
         },
         precio: 118000
     },
@@ -38,8 +38,8 @@ const productosArray = [
         titulo: 'Impresora Artillery Hornet',
         imagen: 'https://http2.mlstatic.com/D_NQ_NP_817658-MLA51619022699_092022-V.webp',
         categoria: {
-            nombre: 'Impresoras',
-            id: 'Impresoras'
+            nombre: 'impresoras',
+            id: 'impresoras'
         },
         precio: 67500
     },
@@ -137,11 +137,18 @@ const productosArray = [
     }
 
 ];
-
+//*Elementos traidos de HTML
 const contenedorProductos = document.querySelector("#contenedorProducto");
+const botonesCategorias = document.querySelectorAll(".botonCategoria");
 
-function cargarProductos() {
-    productosArray.forEach(producto => {
+
+
+//*
+function cargarProductos(productosElegidos) {
+
+    contenedorProductos.innerHTML = "";
+
+    productosElegidos.forEach(producto => {
 
         const div = document.createElement("div");
         div.classList.add("producto");
@@ -149,7 +156,7 @@ function cargarProductos() {
         <img class="productoImagen" src="${producto.imagen}" alt="${producto.titulo}">
         <div class="productoDatos">
             <h3 class="productoTitulo">${producto.titulo}</h3>
-            <p class="productoPrecio">${producto.precio}</p>
+            <p class="productoPrecio">$${producto.precio}</p>
         <button class="productoAgregar" id="${producto.id}" >Agregar</button>
         </div>
         `;
@@ -160,4 +167,20 @@ function cargarProductos() {
 
 }
 
-cargarProductos();
+cargarProductos(productosArray);
+
+botonesCategorias.forEach(boton => {
+    boton.addEventListener("click", (e) => {
+
+        botonesCategorias.forEach(boton => boton.classList.remove("active"));
+        e.currentTarget.classList.add("active");
+
+        if(e.currentTarget.id != "todos") {
+            const productosBoton = productosArray.filter(producto => producto.categoria.id === e.currentTarget.id)
+            cargarProductos(productosBoton);
+        } else {
+            cargarProductos(productosArray);
+        }
+        
+    })
+})
