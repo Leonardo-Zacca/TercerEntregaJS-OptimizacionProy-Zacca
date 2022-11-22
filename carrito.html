@@ -44,72 +44,30 @@
             <h2 class="tituloPrincipal">Carrito</h2>
             <!-- CARDS PRODUCTOS -->
             <div class="contenedorCarrito">
-               <p class="carritoVacio">Tu carrito no tiene productos <i class="bi bi-emoji-frown"></i> </p>
-                <div class="carritoProductos disabled">
-
-                    <div class="carritoProducto">
-                        <img class="carritoProductoImagen" src="http://placekitten.com/200/300" alt="ejemplo">
-                        <div class="carritoProductoTitulo">
-                            <small>Título</small>
-                            <h3>ejemplo 01</h3>
-                        </div>
-                        <div class="carritoProductoCantidad">
-                            <small>Cantidad</small>
-                            <p>1</p>
-                        </div>
-                        <div class="carritoProductoPrecio">
-                            <small>Precio</small>
-                            <p>$1000</p>
-                        </div>
-                        <div class="carritoProductoSubtotal">
-                            <small>Subtotal</small>
-                            <p>$1000</p>
-                        </div>
-                        <button class="EliminarProductoCarrito"><i class="bi bi-trash3-fill"></i></button>
-                    </div>
+               <p id="carritoVacio" class="carritoVacio">Tu carrito no tiene productos <i class="bi bi-emoji-frown"></i> </p>
 
 
-                    <div class="carritoProducto">
-                        <img class="carritoProductoImagen" src="http://placekitten.com/200/305" alt="ejemplo">
-                        <div class="carritoProductoTitulo">
-                            <small>Título</small>
-                            <h3>ejemplo 02</h3>
-                        </div>
-                        <div class="carritoProductoCantidad">
-                            <small>Cantidad</small>
-                            <p>2</p>
-                        </div>
-                        <div class="carritoProductoPrecio">
-                            <small>Precio</small>
-                            <p>$1001</p>
-                        </div>
-                        <div class="carritoProductoSubtotal">
-                            <small>Subtotal</small>
-                            <p>$1001</p>
-                        </div>
-                        <button class="EliminarProductoCarrito"><i class="bi bi-trash3-fill"></i></button>
-                    </div>
-
-
-
+                <div id="carritoProductos" class="carritoProductos disabled">
+                    <!-- !Se rellena con los valores del carrito añadidos en JS -->
                 </div>
-                <div class="carritoAcciones disabled">
+                <div id="carritoAcciones" class="carritoAcciones disabled">
                     <div class="carritoAccionesIzquierda">
-                        <button class="carritoAccionesVaciar">Vaciar Carrito</button>
+                        <button id="carritoAccionesVaciar" class="carritoAccionesVaciar">Vaciar Carrito</button>
                     </div>
                     <div class="carritoAccionesDerecha">
                         <div class="carritoAccionesTotal">
                             <p>Total:</p>
-                            <p id="total">$2001</p>
+                            <p id="total"></p>
                         </div>
-                        <button class="carritoAccionesComprar">Comprar Ahora</button>
+                        <button id="carritoAccionesComprar" class="carritoAccionesComprar">Comprar Ahora</button>
                     </div>
                 </div>
-                <p class="carritoComprado disabled">Muchas gracias por tu compra. <i class="bi bi-emoji-sunglasses"></i> </p>
+                <p id="carritoComprado" class="carritoComprado disabled">Muchas gracias por tu compra. <i class="bi bi-emoji-sunglasses"></i> </p>
             </div>
         </main>
     </div>
     <script src="./js/app.js"></script>
+    <script src="./js/carrito.js"></script>
 </body>
 
 </html>
